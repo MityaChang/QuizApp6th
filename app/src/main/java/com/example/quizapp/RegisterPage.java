@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +37,14 @@ public class RegisterPage extends AppCompatActivity {
                 signUp.setClickable(false);
                 String email = regiMail.getText().toString();
                 String pass = regiPass.getText().toString();
+                if (TextUtils.isEmpty(email)) {
+                    regiMail.setError("Required Field!");
+                    return;
+                }
+                if (TextUtils.isEmpty(pass)) {
+                    regiPass.setError("Required Field!");
+                    return;
+                }
                 signUpFire(email, pass);
             }
         });
