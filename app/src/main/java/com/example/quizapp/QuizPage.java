@@ -91,7 +91,7 @@ public class QuizPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sendScore();
-                Intent intent = new Intent(QuizPage.this,ScorePage.class);
+                Intent intent = new Intent(QuizPage.this, ScorePage.class);
                 startActivity(intent);
                 finish();
             }
@@ -204,6 +204,10 @@ public class QuizPage extends AppCompatActivity {
                     qnNum++;
                 } else {
                     Toast.makeText(QuizPage.this, "End of the questions", Toast.LENGTH_LONG).show();
+//                    ansA.setClickable(false);
+//                    ansB.setClickable(false);
+//                    ansC.setClickable(false);
+//                    ansD.setClickable(false);
                 }
             }
 
@@ -253,27 +257,27 @@ public class QuizPage extends AppCompatActivity {
 
     public void updateCountDown() {
         int sec = (int) (timeLeft / 1000) % 60;
-        time.setText(""+sec);
+        time.setText("" + sec);
     }
 
-    public void pauseTimer(){
+    public void pauseTimer() {
         countDownTimer.cancel();
         timerContinue = false;
     }
 
-    public void sendScore(){
+    public void sendScore() {
         String userUID = user.getUid();
         //Send user score to the user database
         databaseReferenceSecond.child("scores").child(userUID).child("correct").setValue(countCorrect).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(QuizPage.this, "scores sent successfully",Toast.LENGTH_LONG).show();
+                Toast.makeText(QuizPage.this, "scores sent successfully", Toast.LENGTH_LONG).show();
             }
         });
         databaseReferenceSecond.child("scores").child(userUID).child("wrong").setValue(countWrong).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(QuizPage.this, "scores for wrong sent successfully",Toast.LENGTH_LONG).show();
+                Toast.makeText(QuizPage.this, "scores for wrong sent successfully", Toast.LENGTH_LONG).show();
             }
         });
     }
