@@ -30,7 +30,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class LoginPage extends AppCompatActivity {
 
     EditText mail, password;
-    Button signin, signInGoogle;
+    Button signin;
+    SignInButton singInGoogle;
     TextView signUp, forgotPass;
     GoogleSignInClient googleSignInClient;
     FirebaseAuth auth;
